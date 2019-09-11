@@ -10,7 +10,14 @@ def input_students
   puts "Please enter the cohort month"
   cohort = gets.chomp
       # add the student hash to the array
-  students << {name: name, cohort: cohort}
+  puts "Please enter country of birth"
+  country = gets.chomp
+  puts "Please enter most important hobby"
+  hobby = gets.chomp
+  puts "Please enter age of student"
+  age = gets.chomp.to_i
+
+  students << {name: name, cohort: cohort, country: country, hobby: hobby, age: age}
     if students.count == 1
       puts "Now we have one student."
       puts "Please enter the name of the student"
@@ -35,7 +42,11 @@ def print_header
 end
 def print(students)
     students.each_with_index do |student, i|
-    puts "#{i+1}: #{student[:name]} (#{student[:cohort]} cohort)".center(50)
+    puts "#{i+1}: #{student[:name]}
+    #{student[:cohort]} cohort
+    country: #{student[:country]}
+    main hobby: #{student[:hobby]}
+    age: #{student[:age]}".center(50)
    end
   end
 
