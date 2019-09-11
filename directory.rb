@@ -1,3 +1,5 @@
+# changing it so that it only prints the list if there's at least one entry
+
 def input_students
   puts "Please enter the name of the student"
     puts "To finish, just hit return twice"
@@ -36,11 +38,10 @@ end
   students
 end
 
-def print_header
-  puts "The students of Villains Academy".center(50)
-  puts "-------------".center(50)
-end
 def print(students)
+  if students.count > 0
+    puts "The students of Villains Academy".center(50)
+    puts "-------------".center(50)
     students.each_with_index do |student, i|
     puts "#{i+1}: #{student[:name]}
     #{student[:cohort]} cohort
@@ -49,13 +50,15 @@ def print(students)
     age: #{student[:age]}".center(50)
    end
   end
+end
 
 def print_footer(students)
+  if students.count > 0
   puts "Overall, we have #{students.count} great students".center(50)
+end
 end
 
 students = input_students
 #nothing happens until we call the methods
-print_header
 print(students)
 print_footer(students)
