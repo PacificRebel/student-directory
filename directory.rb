@@ -1,5 +1,3 @@
-#added '.center'
-
 def input_students
   puts "Please enter the name of the student"
     puts "To finish, just hit return twice"
@@ -13,12 +11,20 @@ def input_students
   cohort = gets.chomp
       # add the student hash to the array
   students << {name: name, cohort: cohort}
+    if students.count == 1
+      puts "Now we have one student."
+      puts "Please enter the name of the student"
+      puts "To finish, just hit return twice"
+      # get another name from the user
+      name = gets.chomp
+    else
     puts "Now we have #{students.count} students"
     puts "Please enter the name of the student"
     puts "To finish, just hit return twice"
     # get another name from the user
     name = gets.chomp
   end
+end
   # return the array of students
   students
 end
