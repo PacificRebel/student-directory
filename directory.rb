@@ -1,4 +1,4 @@
-# saving to file (csv)
+# saving to file (csv) - final correction
 
 @students = [] # an empty array accessible to all methods
 
@@ -8,7 +8,7 @@ def input_students
   # get the first name
   name = gets.chomp
 # while the name is not empty, repeat this code
-    while !name.empty? do
+  while !name.empty? do
 
   puts "Please enter the cohort month"
   cohort = gets.chomp
@@ -56,6 +56,18 @@ def show_students
   print_footer
 end
 
+def save_students
+  # open the file for writing
+  file = File.open("students.csv", "w")
+  # iterate over the array of students
+  @students.each do |student|
+    student_data = [student[:name], student[:cohort]]
+    csv_line = student_data.join(",")
+    file.puts csv_line
+  end
+  file.close
+end
+
 def process(selection)
   case selection
   when "1"
@@ -89,17 +101,6 @@ def print_footer
   if @students.count > 0
     puts "Overall, we have #{@students.count} great students".center(50)
   end
-
-def save_students
-  # open the file for writing
-  file = File.open("students.csv", "w")
-  # iterate over the array of students
-  @students.each.do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
-  end
-  file.close
 end
 
 interactive_menu
